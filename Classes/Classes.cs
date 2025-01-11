@@ -1,86 +1,87 @@
 ﻿
 namespace project_30_11_24.Classes
 {
-    public class Animal
+    public abstract class Figure
     {
-        public string? Name { get; set; }
-        public string? Region { get; set; }
-        public int Speed { get; set; }
-        public int Age { get; set; }
-        public Animal()
+        public abstract double Area();
+        public abstract double Perimeter();
+    }
+    public class Rectangle : Figure
+    {
+        private double _width;
+        private double _height;
+        public Rectangle(double width, double height)
         {
-            Name = "Unknown";
-            Region = "Unknown";
-            Speed = 0;
-            Age = 0;
+            _width = width;
+            _height = height;
         }
-        public Animal(string name, string region, int speed, int age)
+        public override double Area()
         {
-            Name = name;
-            Region = region;
-            Speed = speed;
-            Age = age;
+            return _width * _height;
         }
-        public void Print()
+        public override double Perimeter()
         {
-            Console.WriteLine();
-            Console.WriteLine("Animal Info: ");
-            Console.WriteLine($"Name: {Name}");
-            Console.WriteLine($"Region: {Region}");
-            Console.WriteLine($"Speed: {Speed}");
-            Console.WriteLine($"Age: {Age}");
-            Console.WriteLine();
+            return 2 * (_width + _height);
         }
     }
-    public class Tiger : Animal
+    public class Circle : Figure
     {
-        public Tiger() : base()
+        private double _radius;
+        public Circle(double radius)
         {
-            Name = "Tiger";
-            Region = "Asia";
-            Speed = 60;
-            Age = 10;
+            _radius = radius;
         }
-        public Tiger(string name, string region, int speed, int age) : base(name, region, speed, age)
+        public override double Area()
         {
-            Name = name;
-            Region = region;
-            Speed = speed;
-            Age = age;
+            return Math.PI * _radius * _radius;
+        }
+        public override double Perimeter()
+        {
+            return 2 * Math.PI * _radius;
         }
     }
-    public class Crocodile : Animal
+    public class RightTriangle : Figure
     {
-        public Crocodile() : base()
+        private double _a;
+        private double _b;
+        private double _c;
+        public RightTriangle(double a, double b, double c)
         {
-            Name = "Crocodile";
-            Region = "Africa";
-            Speed = 30;
-            Age = 20;
+            _a = a;
+            _b = b;
+            _c = c;
         }
-        public Crocodile(string name, string region, int speed, int age) : base(name, region, speed, age)
+        public override double Area()
         {
-            Name = name;
-            Region = region;
-            Speed = speed;
-            Age = age;
+            return 0.5 * _a * _b;
+        }
+        public override double Perimeter()
+        {
+            return _a + _b + _c;
         }
     }
-    public class Kangaroo : Animal
+    public class Trapezoid : Figure
     {
-        public Kangaroo() : base()
+        private double _a;
+        private double _b;
+        private double _c;
+        private double _d;
+        private double _h;
+        public Trapezoid(double a, double b, double c, double d, double h)
         {
-            Name = "Kangaroo";
-            Region = "Australia";
-            Speed = 70;
-            Age = 15;
+            _a = a;
+            _b = b;
+            _c = c;
+            _d = d;
+            _h = h;
         }
-        public Kangaroo(string name, string region, int speed, int age) : base(name, region, speed, age)
+        public override double Area()
         {
-            Name = name;
-            Region = region;
-            Speed = speed;
-            Age = age;
+            return 0.5 * (_a + _b) * _h;
+        }
+        public override double Perimeter()
+        {
+            return _a + _b + _c + _d;
         }
     }
 }
