@@ -9,6 +9,14 @@ namespace project_30_11_24
             Console.ForegroundColor = ConsoleColor.DarkRed;
             try
             {
+                MusicalInstrument violin = new Violin();
+                MusicalInstrument trombone = new Trombone();
+                MusicalInstrument ukulele = new Ukulele();
+                MusicalInstrument cello = new Cello();
+                violin.Print();
+                trombone.Print();
+                ukulele.Print();
+                cello.Print();
             }
             catch (Exception e)
             {
